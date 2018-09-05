@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="cn.springboot.dao.UsersDao">  
+    <!-- 查询单条记录 -->  
+    <select id="selectAll" resultType="cn.springboot.domain.Pt_dm_zzjg" parameterType="map">  
+        select a.jbdm,a.zzjg_mc,a.zzjg_dm,a.zzjglx_dm,a.zzjglx_mc,a.sj_zzjg_dm from pt_dm_zzjg a where a.sj_zzjg_dm=#{zzjg_dm} and a.isdelete='0' order by a.dsporder
+    </select>
+    
+    <select id="selectByJbdm" resultType="cn.springboot.domain.CZRY" parameterType="map">
+    	select b.czry_dm,b.czry_mc
+		  from pt_dm_zzjg a, pt_dm_czry b
+		 where a.zzjg_dm = b.zzjg_dm
+		   and a.isdelete = '0'
+		   and b.isdelete='0'
+		   and a.jbdm like #{JBDM}
+		   order by b.dsporder
+    </select>
+    <!-- <insert id="insertServiceStation" useGeneratedKeys="true" keyProperty="id" parameterType="cn.springboot.domain.ServiceStation">
+    insert into servicestation(userNa,core) values(#{userNa},#{core})
+    </insert> -->
+</mapper>

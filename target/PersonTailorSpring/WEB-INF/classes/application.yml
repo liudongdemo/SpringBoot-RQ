@@ -1,0 +1,54 @@
+spring:
+#  thymeleaf: 
+#    mode: HTML5
+#    encoding: UTF-8
+#    content-type: text/html
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    # 开发禁用缓存
+#    cache: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/springboot?characterEncoding=UTF-8&useSSL=true
+    username: root
+    password: 123456
+    # 可省略驱动配置, sprin-boot 会由url检测出驱动类型
+    # driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      connection-timeout: 60000
+  http: 
+    encoding: 
+      charset: UTF-8
+      enabled: true
+      force: true
+    messages: 
+      encoding: UTF-8
+  profiles: 
+    active: dev #灵活加载端口
+#  freemarker: 
+#    allow-request-override: false
+#    cache: false
+#    check-template-location: true
+#    charset: UTF-8
+#    content-type: text/html
+#    expose-request-attributes: false
+#    expose-session-attributes: false
+#    suffix: .ftl
+#    templateEncoding: UTF-8
+#    prefix: classpath:/ftl/
+#    expose-spring-macro-helpers: false
+#    template-resolver-order: 1
+mybatis:
+  mapperLocations: classpath:cn/springboot/mapper/*.xml
+  typeAliasesPackage: cn.springboot.domain
+# spring-boot默认打印输出info级别以上的，可在此处修改输出级别
+logging:
+  level:
+    root: info
+server: 
+  context-path: / #配置根路径
+  port: 8081 #配置端口号，灵活加载端口了此功能就失效了
+  tomcat: 
+    uri-encoding: UTF-8  
+#下面定义属性加载
+liudong: 
+  name: 刘栋
